@@ -6,7 +6,7 @@
 |------|-----------------|
 | **Prototype (web app)** | **Local run** — We are providing the full working app code in this submission bundle. See the “How to run locally” steps below. |
 | **Presentation slides** | **PDF attached to submission email.** |
-| **Source code / GitHub** *(if applicable)* | **[Link]** — *(Replace with a repo link if you are submitting one.)* |
+| **Source code / GitHub**  | (https://github.com/jmagnuss1/research_collab_recommender/blob/main/SUBMISSION.md) |
 
 **How to run locally (if you have the code):**
 
