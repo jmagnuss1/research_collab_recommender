@@ -6,7 +6,6 @@
 |------|-----------------|
 | **Prototype (web app)** | **Local run** — We are providing the full working app code in this submission bundle. See the “How to run locally” steps below. |
 | **Presentation slides** | **PDF attached to submission email.** |
-| **Video** *(if applicable)* | **[Link]** — *(Replace with your video link if you are submitting one.)* |
 | **Source code / GitHub** *(if applicable)* | **[Link]** — *(Replace with a repo link if you are submitting one.)* |
 
 **How to run locally (if you have the code):**
