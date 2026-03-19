@@ -4,18 +4,20 @@
 
 | Item | Where to access |
 |------|-----------------|
-| **Prototype (web app)** | **[Open-access URL]** — *(Replace with your deployed URL, e.g. Streamlit Community Cloud or shared link.)* Judges can run the app in a browser without installing anything. |
+| **Prototype (web app)** | **Local run** — We are providing the full working app code in this submission bundle. See the “How to run locally” steps below. |
 | **Presentation slides** | **PDF attached to submission email.** |
-| **Video** *(if applicable)* | **[Open-access URL]** — *(Replace with unlisted YouTube/Vimeo or other public link.)* |
-| **Source code / GitHub** *(if applicable)* | **[Open-access URL]** — *(Replace with public repo URL.)* |
+| **Video** *(if applicable)* | **[Link]** — *(Replace with your video link if you are submitting one.)* |
+| **Source code / GitHub** *(if applicable)* | **[Link]** — *(Replace with a repo link if you are submitting one.)* |
 
 **How to run locally (if you have the code):**
 
 1. Open a terminal in the `submission` folder.
-2. `pip install -r requirements.txt`
-3. `streamlit run app.py` (or `python run_app.py`)
-4. Open the URL shown (e.g. http://localhost:8501).  
-   If no data file is present, click **Try demo** to explore with sample data.
+2. Install dependencies: `pip install -r requirements.txt`
+3. Start the app: `streamlit run app.py` (or `python run_app.py`)
+4. Open the URL shown (e.g. http://localhost:8501).
 
 **One-line summary:**  
-We are submitting a Research Collaboration Recommender for Illinois: a public-facing web app that helps students, donors, and leaders find faculty by topic, SDG, or paper, with explainability, evidence panels, and leadership views. Slides are attached as PDF; prototype and any video/repo are linked above.
+We are submitting a Research Collaboration Recommender for Illinois: a web app that helps students, donors, and leaders find faculty by topic, SDG, or paper, with explainability, evidence panels, and leadership views.
+
+**Deployment note (privacy):**  
+This app is straightforward to deploy as a web link, but we intentionally did not publish a public, open-access instance because the dataset includes school employee / faculty information.

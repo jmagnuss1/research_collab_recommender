@@ -9,6 +9,7 @@ Faculty and publication data used by this app may be subject to **institutional 
 - **This repository does not include real faculty data.** Users must supply their own CSV file (see README for format and how to run).
 - If you share this app with others, share only the **code** (and optionally a sample schema). Do not include the actual dataset unless you have permission to redistribute it.
 - Data is read from your own file and is not sent to any external service.
+ - While the app is deployable as a web service, we did not publish an open-access deployment because real faculty/employee information should not be exposed publicly without explicit permission.
 
 ## Demo mode
 
