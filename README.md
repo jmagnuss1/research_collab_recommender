@@ -99,13 +99,6 @@ You can also double-click `run_app.py` (or run `python run_app.py` from this fol
 
 ---
 
-## Final submission checklist (for submitters)
-
-- **Prototype:** Provide an **open-access URL** so judges can review the app in a browser (e.g. deploy to [Streamlit Community Cloud](https://share.streamlit.io) or host elsewhere).
-- **Slides:** Attach your presentation as a **PDF** in the submission email.
-- **Video / prototype / GitHub:** Use **open-access URLs** for any video, live demo, or repo link.
-- **Cover note:** Include a brief note in the email summarizing what you’re submitting and **where each item can be accessed**. You can use or adapt [SUBMISSION.md](SUBMISSION.md) for this.
-
 ---
 
 ## Project layout
