@@ -6,13 +6,28 @@ A **public-facing app** that recommends faculty collaborators using a hybrid sim
 
 ## Judge quick start
 
-**Local run (one command from this folder):**
+**Local run (with the real dataset):**
+
+1. Download this repo (Code → Download ZIP) or clone it, then open a terminal in the folder that contains `app.py`.
+
+2. Create a virtual environment and install dependencies:
 
 ```bash
-pip install -r requirements.txt && streamlit run app.py
+python3 -m venv .venv
+source .venv/bin/activate   # Windows: .venv\\Scripts\\activate
+pip install -r requirements.txt
+```
+
+3. Point the app at your CSV and run:
+
+```bash
+export CASE_COMP_DATA="/path/to/case_competition.csv"
+streamlit run app.py
 ```
 
 Then open the URL shown (e.g. http://localhost:8501).
+
+**Alternative:** If you place your CSV file in this same folder and name it `case_competition.csv`, you can skip setting `CASE_COMP_DATA`.
 
 **Note on deployment (privacy):** This app is straightforward to deploy as a public web link, but we intentionally did not publish an open-access instance because the dataset includes school employee / faculty information.
 
@@ -98,6 +113,13 @@ You can also double-click `run_app.py` (or run `python run_app.py` from this fol
 | **User-friendly** | No UUIDs in the UI; faculty and papers are chosen by **name** (and department or year for disambiguation). Plain-language labels, tooltips, and sensible defaults. |
 
 ---
+
+## Final submission checklist (for submitters)
+
+- **Prototype:** Provide a repo or zipped bundle that judges can run locally.
+- **Slides:** Attach your presentation as a **PDF** in the submission email.
+- **Video / prototype / GitHub:** Provide a link to the repo and/or a link to a short walkthrough video (optional).
+- **Cover note:** Include a brief note in the email summarizing what you’re submitting and **where each item can be accessed**. You can use or adapt [SUBMISSION.md](SUBMISSION.md) for this.
 
 ---
 

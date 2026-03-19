@@ -10,9 +10,13 @@
 
 **How to run locally (if you have the code):**
 
-1. Open a terminal in the `submission` folder.
+1. Download the repo and open a terminal in the folder that contains `app.py`.
 2. Install dependencies: `pip install -r requirements.txt`
-3. Start the app: `streamlit run app.py` (or `python run_app.py`)
+3. Start the app:
+   - If your CSV is named `case_competition.csv` and placed next to `app.py`, run: `streamlit run app.py`
+   - Otherwise, set `CASE_COMP_DATA` to your CSV path and run:
+     - `export CASE_COMP_DATA="/path/to/case_competition.csv"`
+     - `streamlit run app.py`
 4. Open the URL shown (e.g. http://localhost:8501).
 
 **One-line summary:**  
