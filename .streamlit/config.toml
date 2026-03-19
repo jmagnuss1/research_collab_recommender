@@ -1,0 +1,12 @@
+# University of Illinois Urbana-Champaign brand theme
+# Illini Orange #FF5F05, Illini Blue #13294B
+
+[theme]
+primaryColor = "#FF5F05"
+backgroundColor = "#FAFBFC"
+secondaryBackgroundColor = "#F0F4F8"
+textColor = "#13294B"
+font = "sans serif"
+
+[server]
+headless = true

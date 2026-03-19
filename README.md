@@ -6,15 +6,15 @@ A **public-facing app** that recommends faculty collaborators using a hybrid sim
 
 ## Judge quick start
 
-**Preferred:** Use our **open-access URL** (see [SUBMISSION.md](SUBMISSION.md) or the submission email) to run the app in your browser — no install required.
-
 **Local run (one command from this folder):**
 
 ```bash
 pip install -r requirements.txt && streamlit run app.py
 ```
 
-Then open the URL shown (e.g. http://localhost:8501). If you don’t have a data file, click **Try demo** to explore with sample data.
+Then open the URL shown (e.g. http://localhost:8501).
+
+**Note on deployment (privacy):** This app is straightforward to deploy as a public web link, but we intentionally did not publish an open-access instance because the dataset includes school employee / faculty information.
 
 ---
 
@@ -72,8 +72,6 @@ python run_app.py
 You can also double-click `run_app.py` (or run `python run_app.py` from this folder in a terminal) to start the app. Then open the URL shown (e.g. http://localhost:8501).
 
 **No data file?** If you don't have a CSV yet, the app will show a short message and a **Try demo** button so you can explore the interface with sample data.
-
-**Deploy to get a public URL:** See [DEPLOY.md](DEPLOY.md) for step-by-step instructions (Streamlit Community Cloud).
 
 **Caching:** Embeddings are cached under `.cache/`. Delete `.cache/` to force a full rebuild after data changes.
 
