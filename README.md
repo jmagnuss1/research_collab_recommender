@@ -29,6 +29,8 @@ streamlit run app.py
 
 5. Open your browser to http://localhost:8501
 
+If you see `Error: File does not exist: app.py`, it means your terminal is not inside the project folder. Run `cd ` (with a space after), drag the project folder into the terminal window, press Enter, then run `streamlit run app.py` again.
+
 The first run downloads a language model (about 90MB) and caches it — this only happens once.
 
 ## What You'll See
