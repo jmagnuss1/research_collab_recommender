@@ -1,26 +1,11 @@
-# Case Competition — Final Submission Cover Note
+# Research Collaboration Recommender — Submission Cover Note
 
-**What we’re submitting and where each item can be accessed:**
+We built a web application that helps students, donors, and university administrators find faculty researchers by topic, sustainability goal, or publication. The problem it solves is a real one: research expertise is scattered across departments, buried in publication titles, and invisible to the people who most need to find it. This app surfaces connections that would otherwise require hours of manual searching.
 
-| Item | Where to access |
-|------|-----------------|
-| **Prototype (web app)** | **Local run** — We are providing the full working app code in this submission bundle. See the “How to run locally” steps below. |
-| **Presentation slides** | **PDF attached to submission email.** |
-| **Source code / GitHub**  | (https://github.com/jmagnuss1/research_collab_recommender/blob/main/SUBMISSION.md) |
+The technical approach combines three complementary signals. Sentence-BERT encodes publication abstracts into semantic vectors that capture meaning beyond surface-level keyword matching. TF-IDF weighs the terms most distinctive to each researcher's body of work, providing a fast, interpretable complement to the neural embeddings. SDG vectors map faculty research to the 17 UN Sustainable Development Goals using a curated keyword taxonomy, enabling goal-aligned discovery for donors and sustainability researchers. The final similarity score blends all three, and users can compare it against any single-signal ranking to see what each approach contributes.
 
-**How to run locally (if you have the code):**
+What sets this apart is the combination of explainability, multi-persona design, and zero reliance on paid services. Every recommendation shows a plain-English breakdown of why two researchers were matched — shared keywords, SDG overlap, and an abstract similarity score. The app is built around three distinct user flows (researcher search, student mentor discovery, and donor SDG exploration) rather than a single generic interface. Sentence-BERT and TF-IDF run entirely locally, so the app works without any API keys or external subscriptions, and the model is cached after the first run.
 
-1. Download the repo and open a terminal in the folder that contains `app.py`.
-2. Install dependencies: `pip install -r requirements.txt`
-3. Start the app:
-   - If your CSV is named `case_competition.csv` and placed next to `app.py`, run: `streamlit run app.py`
-   - Otherwise, set `CASE_COMP_DATA` to your CSV path and run:
-     - `export CASE_COMP_DATA="/path/to/case_competition.csv"`
-     - `streamlit run app.py`
-4. Open the URL shown (e.g. http://localhost:8501).
+The source code and full setup instructions are at https://github.com/jmagnuss1/research_collab_recommender. To run the app locally, install dependencies with `pip install -r requirements.txt` and start it with `streamlit run app.py`, then open http://localhost:8501 in your browser. Presentation slides are attached to the submission email as a PDF. We did not publish a public live demo because the dataset includes faculty employment information, but the app is straightforward to deploy to Streamlit Community Cloud or any standard hosting environment.
 
-**One-line summary:**  
-We are submitting a Research Collaboration Recommender for Illinois: a web app that helps students, donors, and leaders find faculty by topic, SDG, or paper, with explainability, evidence panels, and leadership views.
-
-**Deployment note (privacy):**  
-This app is straightforward to deploy as a web link, but we intentionally did not publish a public, open-access instance because the dataset includes school employee / faculty information.
+— [Team Member Names]

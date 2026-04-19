@@ -1,142 +1,58 @@
 # Research Collaboration Recommender
 
-A **public-facing app** that recommends faculty collaborators using a hybrid similarity model: Sentence-BERT (abstracts), TF-IDF (keywords), and SDG vectors (sustainability). Built for **students, donors, administrators, and peer institutions** — clean UI, no jargon, with explainability and evidence.
+A web app that helps students, donors, and university administrators find faculty researchers by topic, sustainability goal, or publication — with plain-English explanations of every match.
 
----
+## Quick Start
 
-## Judge quick start
+You'll need Python 3 installed. If you don't have it, download it from python.org before continuing.
 
-**Local run (with the real dataset):**
+1. Download this project as a ZIP file and unzip it somewhere easy to find (your Desktop works well).
 
-1. Download this repo (Code → Download ZIP) or clone it, then open a terminal in the folder that contains `app.py`.
+2. Open Terminal. On Mac, press Cmd+Space, type "Terminal", and press Enter. On Windows, open PowerShell.
 
-2. Create a virtual environment and install dependencies:
+3. Navigate to the unzipped project folder. The easiest way: open Terminal, type `cd ` (with a space after), drag the project folder into the Terminal window, and press Enter.
+
+4. Run these commands, one at a time:
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate   # Windows: .venv\\Scripts\\activate
+```
+```bash
+source .venv/bin/activate
+```
+```bash
 pip install -r requirements.txt
 ```
-
-3. Point the app at your CSV and run:
-
-```bash
-export CASE_COMP_DATA="/path/to/case_competition.csv"
-streamlit run app.py
-```
-
-Then open the URL shown (e.g. http://localhost:8501).
-
-**Alternative:** If you place your CSV file in this same folder and name it `case_competition.csv`, you can skip setting `CASE_COMP_DATA`.
-
-**Note on deployment (privacy):** This app is straightforward to deploy as a public web link, but we intentionally did not publish an open-access instance because the dataset includes school employee / faculty information.
-
----
-
-## What the app does
-
-- **Find collaborators by faculty name or department** — See top similar researchers with “Why this match” (shared keywords, SDGs, signal breakdown).
-- **Student flow:** “Find a sustainability mentor” — Enter a topic (e.g. sustainability, renewable energy) and get faculty whose work matches.
-- **Donor flow:** “Find projects to fund” — Browse by UN Sustainable Development Goal (SDG) and see aligned researchers.
-- **By paper:** Pick a publication by title and see which faculty are closest to that paper’s topics.
-- **Evidence & confidence:** For each profile, see data sources, missingness (abstracts/keywords/SDGs), publication count, and a High/Medium/Low confidence label. **Flag/correct** flow writes to `flagged_issues.csv`.
-- **Alternatives considered:** Compare default ranking with BERT-only, TF-IDF-only, and SDG-only rankings.
-- **Leadership:** Most connected faculty, cross-department similarity, top SDGs, with CSV export.
-
-**Departments included:** Finance, Accountancy, Business Administration.
-
----
-
-## Setup
-
-1. **Clone or download** this repo and open a terminal in the project folder.
-
-2. **Create a virtual environment** (recommended):
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate   # Windows: .venv\Scripts\activate
-   ```
-
-3. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-   First run may download the Sentence-BERT model (requires internet).
-
-4. **Data:** Place `case_competition.csv` in the project root, or set:
-   ```bash
-   export CASE_COMP_DATA=/path/to/your/data.csv
-   ```
-
----
-
-## How to run
-
-From the **project root** (the folder that contains `app.py`):
-
 ```bash
 streamlit run app.py
 ```
 
-Or run the entrypoint script:
+5. Open your browser to http://localhost:8501
 
-```bash
-python run_app.py
-```
+The first run downloads a language model (about 90MB) and caches it — this only happens once.
 
-You can also double-click `run_app.py` (or run `python run_app.py` from this folder in a terminal) to start the app. Then open the URL shown (e.g. http://localhost:8501).
+## What You'll See
 
-**No data file?** If you don't have a CSV yet, the app will show a short message and a **Try demo** button so you can explore the interface with sample data.
+The app is built around four distinct user flows.
 
-**Caching:** Embeddings are cached under `.cache/`. Delete `.cache/` to force a full rebuild after data changes.
+Finding a collaborator. Search by faculty name and the app returns their closest research neighbors from across Finance, Accountancy, and Business Administration. Each result comes with a "Why this match" panel showing shared keywords, SDG overlap, and an abstract similarity score — so the ranking is never a black box.
 
----
+Student mentor search. Type a topic like "renewable energy" or "behavioral economics" and get a ranked list of faculty whose published work is most relevant. You don't need to know any names or departments going in.
 
-## Data use and sharing
+Donor SDG explorer. Browse by UN Sustainable Development Goal to find researchers whose work aligns with your funding priorities. Each result shows the faculty member's top SDGs and the specific publications that drove the match.
 
-- Faculty and publication data may be subject to **institutional or campus policy**. Do not redistribute real datasets without checking with your institution. See [DATA_USE.md](DATA_USE.md) for more.
-- **This repo does not include real faculty data.** You supply your own CSV.
+Paper-to-faculty matching. Pick any publication by title and find other faculty whose work is closest to that paper's themes — useful for spotting collaboration opportunities that wouldn't show up on an org chart.
 
-**Sharing this app:** To share with others, zip this folder (or share the repo) **without** including `case_competition.csv` or any real data. Recipients install dependencies and add their own data file.
+Leadership view. A summary layer with the most-connected researchers across departments, a cross-department similarity table, and top SDGs across the college. Everything exports to CSV.
 
----
+## How It Works
 
-## How we address judge feedback
+The recommender blends three signals. Sentence-BERT encodes publication abstracts into dense semantic vectors, capturing meaning beyond keyword overlap. TF-IDF weighs the terms that are most distinctive to each researcher's body of work. SDG vectors map research to the 17 UN Sustainable Development Goals using a curated keyword taxonomy. The final similarity score is a weighted combination of all three, and an Alternatives tab lets you compare the default ranking against any single signal so you can see what each approach contributes.
 
-| Feedback | Where it’s addressed |
-|--------|------------------------|
-| **Personas & journey maps** | **Home** tab: “Find a sustainability mentor” (Student) and “Find projects to fund” (Donor) run real topic/SDG searches and show results. **Find collaborators** supports both flows. |
-| **Explainability** | Each recommendation has expandable “Why this match”: shared keywords, shared SDG tags, abstract/keyword/SDG signal breakdown, and a plain-English summary. **How it works** tab explains the model in simple language. |
-| **Evidence & data quality** | **Evidence & confidence** panel (in Find collaborators): data sources, how SDG tags are assigned, missingness %, publication count, confidence level. **“What to do if something looks wrong”** → Flag form that appends to `flagged_issues.csv`. |
-| **Alternatives considered** | **Alternatives** tab: BERT-only, TF-IDF-only, SDG-only rankings plus short explanation of weights and cosine similarity. |
-| **Leadership layer** | **Leadership** tab: most connected faculty, cross-department similarity table, top SDGs. **Export** button for leadership summary CSV. |
-| **User-friendly** | No UUIDs in the UI; faculty and papers are chosen by **name** (and department or year for disambiguation). Plain-language labels, tooltips, and sensible defaults. |
+Embeddings are cached after the first run under `.cache/`. Delete that folder if you replace or update the data file.
 
----
+## Data and Privacy
 
-## Final submission checklist (for submitters)
+The repo includes no faculty data — you supply your own `case_competition.csv` in the project root. Faculty records may be subject to institutional policy; do not redistribute real datasets without checking with your institution first.
 
-- **Prototype:** Provide a repo or zipped bundle that judges can run locally.
-- **Slides:** Attach your presentation as a **PDF** in the submission email.
-- **Video / prototype / GitHub:** Provide a link to the repo and/or a link to a short walkthrough video (optional).
-- **Cover note:** Include a brief note in the email summarizing what you’re submitting and **where each item can be accessed**. You can use or adapt [SUBMISSION.md](SUBMISSION.md) for this.
-
----
-
-## Project layout
-
-- `app.py` — Streamlit UI (landing, explore, by paper, alternatives, leadership, how it works).
-- `run_app.py` — Entrypoint: `python run_app.py` runs the app.
-- `src/data_load.py` — Load CSV, clean, filter departments, build faculty meta.
-- `src/features.py` — Publication-level embeddings (SBERT + TF-IDF + SDG) with disk cache.
-- `src/recommender.py` — Faculty/paper profiles, similarity matrices, recommendations, topic/SDG search, paper→faculty, alternate modes.
-- `src/explain.py` — “Why this match” explanations and data quality report.
-- `case_competition.csv` — Your input data (optional; place in project root or set `CASE_COMP_DATA`). Not included in the repo.
-- `flagged_issues.csv` — Created when users flag a record (timestamp, entity_id, type, notes). See `.gitignore`.
-
----
-
-## Notes
-
-- **No paid services** — Sentence-BERT and TF-IDF run locally; first run downloads the model once.
-- **Jupyter:** The original ipywidgets dashboard is in `CaseCompExpanded1.py`; it expects a `src/` package and will work once you run from the same environment. The **recommended way to run** is Streamlit: `streamlit run app.py`.
+If something in the app looks wrong, every faculty profile has a Flag form that appends a timestamped note to `flagged_issues.csv` for later review.
